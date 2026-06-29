@@ -1,6 +1,6 @@
 import React from "react";
 import { GLOBAL_CSS } from "./Constants";
-import { CinematicBg, ScrollBar } from "./components/GlobalEffects";
+import { CinematicBg } from "./components/GlobalEffects";
 import Ticker from "./components/Ticker";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -38,11 +38,12 @@ export default function App() {
         }
       `}</style>
 
+      {/* Renders deeply at zIndex: 0 */}
       <CinematicBg />
-      <ScrollBar />
       {/* <Cursor /> */}
 
-      <div style={{ position: "relative", zIndex: 10 }}>
+      {/* ── CRITICAL FIX: Explicitly forcing transparent background here ── */}
+      <div style={{ position: "relative", zIndex: 10, background: "transparent" }}>
         <Ticker />
         <Navbar />
         <Hero />
